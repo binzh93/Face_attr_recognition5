@@ -150,7 +150,8 @@ class Data_Layer_train(caffe.Layer):
         image *= self.scale
         #print os.path.join(self.basepath, img_path), label, pts
         
-        label = label * 1.0 / 70
+        if pts != -1:
+            pts = pts / 70.0
 
         return image, label, pts
 
@@ -252,7 +253,7 @@ class Data_Layer_validation(caffe.Layer):
         image -= self.mean
         image *= self.scale
         
-        label = label * 1.0 / 70
+        pts = pts / 70.0
 
         return image, label, pts
 
@@ -302,4 +303,6 @@ class filter_Layer(caffe.Layer):
         if self.count == 0:
             bottom[0].diff[...] = 0
             bottom[1].diff[...] = 0
+
+
 
