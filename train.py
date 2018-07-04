@@ -1,5 +1,8 @@
 import sys
-sys.path.append('/workspace/mnt/group/face-det/zhubin/caffe/python')
+import os
+curr_path = os.path.abspath(".")
+sys.path.append(curr_path)
+
 import caffe
 caffe.set_device(0)
 caffe.set_mode_gpu()
